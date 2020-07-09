@@ -40,4 +40,8 @@ If you forget to take note of the environment, launch the environment console, a
 
 If you want to review all the environment variables, run the command: `printenv`
 
+It strikes me that we could make a repo similar to this as a template repo and then maybe use Github Actions to automate some of the onboarding elements, eg by rewriting template file slots based on the new repo name. This post - [
+*Onboarding Into A New Github Repo – Initial Commit Actioned PRs*
+](https://blog.ouseful.info/2020/02/25/onboarding-into-a-new-github-repo-initial-commit-actioned-prs/) — might provide some cribs for how to achieve that...
+
 
