@@ -1,0 +1,52 @@
+type: install
+id: minimaljupyter
+name: Minimal pesonbal Jupyter notebook server
+homepage: https://github.com/ousefulReclaimed/tm129-minimalJupyterNotebook/
+baseUrl: https://raw.githubusercontent.com/ousefulReclaimed/minimalJupyterNotebook/master
+logo: oi_utils.png
+
+description: 
+  text: Minimal personal Jupyter notebook server
+  
+categories:
+- apps/popular
+- apps/dev-tools
+- apps/e-learning
+
+globals:
+  JUPYTER_TOKEN: ${fn.password}
+
+nodes:
+  nodeType: dockerengine
+  nodeGroup: cp
+  cloudlets: 16
+  extip: false
+  displayName: Minimal Jupyter notebook
+  env:
+      JUPYTER_TOKEN: ${globals.JUPYTER_TOKEN}
+
+onInstall: setup
+
+actions:
+  setup:
+    cmd[cp]: |-
+      docker run -d -p 80:8888 \
+      -e JUPYTER_TOKEN=${globals.JUPYTER_TOKEN} \
+      --name minimaljupyter \
+      --restart=always \
+      jupyter/base-notebook:latest
+
+      #Checking of container is up and running 
+      until [ "`/usr/bin/docker inspect -f {{.State.Running}} minimaljupyter`"=="true" ]; do
+        sleep 1
+        print '.'
+      done;
+
+      echo OK
+
+ssl: true
+skipNodeEmails: true
+    
+success: | 
+  **Juyter notebook URL**: [https://${env.domain}/](https://${env.domain}/)  
+  **Token**: ${globals.JUPYTER_TOKEN}
