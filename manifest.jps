@@ -1,6 +1,6 @@
 type: install
 id: minimaljupyter
-name: Minimal pesonbal Jupyter notebook server
+name: Minimal personal Jupyter notebook server
 homepage: https://github.com/ousefulReclaimed/tm129-minimalJupyterNotebook/
 baseUrl: https://raw.githubusercontent.com/ousefulReclaimed/minimalJupyterNotebook/master
 logo: oi_utils.png
